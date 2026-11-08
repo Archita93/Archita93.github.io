@@ -165,14 +165,16 @@
   @media (max-width:900px){.wp{grid-template-columns:1fr}.wp .frame{max-width:340px}.traj{padding-left:44px}.wp::before{left:-30px}.traj svg.path{width:30px}}
 
   /* ---------- TALKS ---------- */
-  .talks{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .talks{display:grid;grid-template-columns:repeat(6,1fr);gap:22px}
+  .talk{grid-column:span 2}
+  .talk:nth-last-child(2):nth-child(3n+1){grid-column:2 / span 2}
   .talk{border:1px solid var(--line);padding:0 0 22px;display:flex;flex-direction:column;gap:14px;transition:border-color .3s, transform .3s}
   .talk:hover{border-color:#3a3b40}
   .talk .frame{aspect-ratio:16/9;border:0;border-bottom:1px solid var(--line)}
   .talk > *:not(.frame){padding:0 22px}
   .talk h6{font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15}
   .talk .award{color:var(--obst)}
-  @media (max-width:900px){.talks{grid-template-columns:1fr}}
+  @media (max-width:900px){.talks{grid-template-columns:1fr}.talk,.talk:nth-last-child(2):nth-child(3n+1){grid-column:auto}}
 
   /* ---------- AWARDS ---------- */
   .awards{display:grid;grid-template-columns:1fr 1fr;gap:6vw}
@@ -192,7 +194,7 @@
   @media (max-width:900px){.skills{grid-template-columns:1fr 1fr}}
   @media (max-width:520px){.skills{grid-template-columns:1fr}}
 
-  /* ---------- GALLERY ---------- */
+  ---------- GALLERY ----------
   .gallery{columns:3 280px;column-gap:18px}
   .gallery .frame{margin-bottom:18px;break-inside:avoid}
   .gallery .frame:nth-child(3n+1){aspect-ratio:4/5}
@@ -264,8 +266,8 @@
 <!-- ================= ABOUT ================= -->
 <section id="about">
   <div class="wrap about">
-    <figure class="frame rv" data-file="images/portrait.jpg">
-      <img src="images/portrait.jpg" alt="Portrait of Archita Srivastava">
+    <figure class="frame rv" data-file="images/portrait.png">
+      <img src="images/portrait.png" alt="Portrait of Archita Srivastava">
       <span class="bbox" data-label="person · archita · 0.99"></span>
     </figure>
     <div class="rv">
@@ -282,8 +284,8 @@
       <p>I've applied that across domains: vision-language models for medical imaging at Sunnybrook, RGB–LiDAR fusion for semantic segmentation and terrain mapping on the ANYmal quadruped at KIT, LLM behaviour on resource-constrained devices, and applied agentic AI at RBC. Now at SFU's Introbotics Lab, I'm combining generative 3D object priors with real robot observations to create better 3D assets for mobile manipulation.</p> -->
       <div class="facts">
         <div><strong>3.94</strong><span class="mono">GPA / 4.33</span></div>
-        <div><strong>6+</strong><span class="mono">Research labs</span></div>
-        <div><strong>3</strong><span class="mono">Robots deployed on</span></div>
+        <div><strong>6</strong><span class="mono">Research labs</span></div>
+        <div><strong>3</strong><span class="mono">Robots worked with</span></div>
       </div>
     </div>
   </div>
@@ -322,7 +324,7 @@
         </figure>
         <div class="card-meta"><span class="mono">KIT · MAIRO Lab · 2026</span><span class="mono">DAAD RISE</span></div>
         <h4>Multimodal scene understanding for a legged robot</h4>
-        <p>Built the segmentation head of a Mixture-of-Experts model with early- and mid-fusion of RGB + LiDAR. Then I wired the output into a VDB terrain map and an A* planner so ANYmal could act on what it sees.</p>
+        <p>Built the segmentation head of a Mixture-of-Experts model with early- and mid-fusion of RGB + LiDAR. Then I wired the output into a VDB terrain map and an A* planner for ANYmal to act on what it sees, validated on RViz2.</p>
         <div class="tags"><span>PyTorch</span><span>Sensor fusion</span><span>ROS2</span><span>PCL / VDB</span><span>Waymo · KITTI-360</span></div>
         <div class="links"><a href="slides/daad-rise-2026.pdf">Slides ↗</a><a href="#">Video ↗</a></div>
       </article>
@@ -334,27 +336,30 @@
         </figure>
         <div class="card-meta"><span class="mono">SFU · Robotic Autonomy · 2026</span></div>
         <h4>Follow-Ahead Robot</h4>
-        <p>Led hardware integration to reproduce an MCTS + A2C + LSTM follow-ahead policy. I ported it from ROS1 to ROS2 and built a VICON–ROS2 bridge, reaching up to 84.7% success on a QBot 2e.</p>
-        <div class="tags"><span>ROS2</span><span>VICON</span><span>RL</span></div>
-        <div class="botchips"><span class="mono">Robot</span><a href="#robots">QBot 2e</a></div>
-        <div class="links"><a href="slides/follow-ahead.pdf">Slides ↗</a><a href="#">Project ↗</a></div>
+        <p>Led hardware integration to reproduce an MCTS + A2C + LSTM follow-ahead policy: ported the codebase from ROS1 to ROS2 and built a VICON–ROS2 bridge, reaching up to 84.7% success on slow trajectories with a QBot 2e.</p>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-top:4px">
+          <div class="tags" style="margin-top:0"><span>ROS2</span><span>VICON</span><span>RL</span></div>
+          <div class="botchips" style="margin-top:0"><span class="mono">Robot</span><a href="#robots">QBot 2e</a></div>
+        </div>
+        
+        <div class="links"><a href="https://s-gemmin.github.io/follow-ahead-web/">Website ↗</a></div>
       </article>
 
       <article class="card narrow rv">
         <figure class="frame" data-file="images/introbotics.jpg">
           <img src="images/introbotics.jpg" alt="Robot manipulation setup at Introbotics Lab">
-          <span class="bbox" data-label="object · articulated · 0.91" style="--c:var(--sky)"></span>
+          <span class="bbox" data-label="slam localization · 3d env · 0.91" style="--c:var(--sky)"></span>
         </figure>
         <div class="card-meta"><span class="mono">SFU · Introbotics Lab · Now</span></div>
         <h4>Physically grounded 3D assets</h4>
         <p>Refining generative 3D object priors with real robot observations to produce articulated, simulation-ready assets for manipulation.</p>
-        <div class="tags"><span>3D vision</span><span>Manipulation</span><span>IsaacSim</span></div>
+        <div class="tags"><span>3D Segmentation</span><span>SLAM</span><span>nerfstudio</span></div>
       </article>
 
       <article class="card wide rv">
         <figure class="frame" data-file="images/sunnybrook.jpg">
           <img src="images/sunnybrook.jpg" alt="Research poster at Sunnybrook">
-          <span class="bbox" data-label="poster · winner · 0.98" style="--c:var(--terrain)"></span>
+          <span class="bbox" data-label="presenter · winner · 0.98" style="--c:var(--terrain)"></span>
         </figure>
         <div class="card-meta"><span class="mono">U of Toronto · Sunnybrook · 2025</span><span class="mono">T-CAIREM</span></div>
         <h4>VLMs &amp; LLMs for breast-cancer imaging</h4>
@@ -433,7 +438,7 @@
         <div><h5>Undergraduate Research Assistant</h5><div class="org">Introbotics Lab · Simon Fraser University</div>
           <ul><li>Pipeline grounding generative 3D object priors with real robot observations for manipulation.</li></ul>
           <div class="links"><a href="slides/introbotics.pdf">Slides ↗</a></div></div>
-        <figure class="frame" data-file="images/exp-introbotics.jpg"><img src="images/exp-introbotics.jpg" alt=""></figure>
+        <figure class="frame" data-file="images/exp-introbotics.png"><img src="images/exp-introbotics.png" alt=""></figure>
       </div>
 
       <div class="wp rv">
@@ -441,35 +446,35 @@
         <div><h5>Robotics Research Intern, DAAD RISE</h5><div class="org">MAIRO Lab · Karlsruhe Institute of Technology, Germany</div>
           <ul><li>RGB–LiDAR fusion segmentation head for an outdoor MoE model.</li><li>Segmentation → VDB terrain map → A* planner → ROS2 controller for ANYmal, validated in RViz.</li><li>Tested locomotion policies on a Unitree Go2 with an onboard depth camera.</li></ul>
           <div class="botchips"><span class="mono">Robots</span><a href="#robots">ANYmal</a><a href="#robots">Unitree Go2</a></div></div>
-        <figure class="frame" data-file="images/exp-kit.jpg"><img src="images/exp-kit.jpg" alt=""></figure>
+        <figure class="frame" data-file="images/exp-kit.png"><img src="images/exp-kit.png" alt=""></figure>
       </div>
 
       <div class="wp rv">
         <span class="mono">Jan — Jun 2026</span>
         <div><h5>Undergraduate Research Assistant</h5><div class="org">Reliable Systems Lab · SFU · Dr. Steven Ko</div>
           <ul><li>Memory behaviour of a quantized 70B LLM under mmap vs non-mmap inference in llama.cpp.</li><li>On-device LLM profiling on a Pixel 10 Pro with Perfetto tracing.</li></ul></div>
-        <figure class="frame" data-file="images/exp-systems.jpg"><img src="images/exp-systems.jpg" alt=""></figure>
+        <figure class="frame" data-file="images/exp-systems.png"><img src="images/exp-systems.png" alt=""></figure>
       </div>
 
       <div class="wp rv">
         <span class="mono">May — Aug 2025</span>
         <div><h5>AI Research Intern, T-CAIREM</h5><div class="org">Martel Lab · University of Toronto / Sunnybrook</div>
           <ul><li>One of 32 students selected; won Best Presentation in the cohort.</li><li>LoRA-tuned Llama 3.1 8B for PHI de-identification; VLM linear probing on mammograms.</li></ul></div>
-        <figure class="frame" data-file="images/exp-sunnybrook.jpg"><img src="images/exp-sunnybrook.jpg" alt=""></figure>
+        <figure class="frame" data-file="images/exp-sunnybrook.png"><img src="images/exp-sunnybrook.png" alt=""></figure>
       </div>
 
       <div class="wp rv">
         <span class="mono">Oct 2024 — Oct 2025</span>
         <div><h5>Research Assistant</h5><div class="org">UBC Faculty of Medicine &amp; SFU · Dr. Najib Ayas, Dr. Ghassan Hamarneh</div>
           <ul><li>ML to assess obstructive sleep apnea severity from cognitive, insomnia and sleepiness scores.</li><li>Poster presented at SLEEP 2025.</li></ul></div>
-        <figure class="frame" data-file="images/exp-ubc.jpg"><img src="images/exp-ubc.jpg" alt=""></figure>
+        <figure class="frame" data-file="images/exp-ubc.png"><img src="images/exp-ubc.png" alt=""></figure>
       </div>
 
       <div class="wp rv">
         <span class="mono">May — Dec 2024</span>
-        <div><h5>Machine Learning Engineering Intern</h5><div class="org">Royal Bank of Canada · Toronto</div>
-          <ul><li>RAG retrieval + LightFM recommender for personalized semantic search in Avion Rewards.</li><li>+87% merchant data coverage; agentic-workflow proof of concept with LangGraph and CrewAI.</li></ul></div>
-        <figure class="frame" data-file="images/exp-rbc.jpg"><img src="images/exp-rbc.jpg" alt=""></figure>
+        <div><h5>Machine Learning Engineering Intern</h5><div class="org">Generative AI Innovation Lab · Royal Bank of Canada · Toronto</div>
+          <ul><li>RAG retrieval + LightFM recommender for personalized semantic search in Avion Rewards.</li><li>Agentic-workflow proof of concept with LangGraph and CrewAI.</li></ul></div>
+        <figure class="frame" data-file="images/exp-rbc.png"><img src="images/exp-rbc.png" alt=""></figure>
       </div>
 
       <div class="wp rv">
@@ -492,41 +497,45 @@
     </div>
     <div class="talks">
       <div class="talk rv">
-        <figure class="frame" data-file="images/talk-daad.jpg"><img src="images/talk-daad.jpg" alt=""></figure>
-        <span class="mono">DAAD RISE Conference 2026 · Heidelberg</span>
+        <figure class="frame" data-file="images/talk-daad.jpg">
+          <img src="images/talk-daad.jpg" alt="Archita presenting at the DAAD RISE Conference" style="object-position: center 27%;"></figure>
+        <!-- <span class="mono">DAAD RISE Conference 2026 · Heidelberg</span> -->
+        <span class="mono award">★ Selected presenter · DAAD RISE 2026, Heidelberg · 1 of 6 from 250+</span>
         <h6>More Than Meets the Eye: Multimodal Semantic Scene Understanding in Robotics</h6>
-        <div class="links"><a href="slides/daad-rise-2026.pdf">Slides ↗</a></div>
+        <div class="links"><a href="https://drive.google.com/file/d/1WbA-v9uddXXW3mP1bXSlpqGC1SSh8yKO/view?usp=sharing">Slides ↗</a></div>
       </div>
       <div class="talk rv">
         <figure class="frame" data-file="images/talk-tcairem.jpg"><img src="images/talk-tcairem.jpg" alt=""></figure>
         <span class="mono award">★ Best Presentation · T-CAIREM 2025</span>
         <h6>VLMs for Pre-Surgical Prediction of Upstaging in DCIS</h6>
-        <div class="links"><a href="slides/tcairem-2025.pdf">Slides ↗</a></div>
+        <div class="links"><a href="https://drive.google.com/file/d/1LHpkV2GoEFgpHY5LG4htVmObuRYRITDi/view?usp=sharing">Slides ↗</a></div>
       </div>
       <div class="talk rv">
         <figure class="frame" data-file="images/talk-acii.jpg"><img src="images/talk-acii.jpg" alt=""></figure>
         <span class="mono award">★ 1st Place · SFU Research Symposium</span>
         <h6>Contextual Emotion Estimation from Image Captions (ACII 2023, MIT)</h6>
-        <div class="links"><a href="#">Paper ↗</a><a href="slides/acii-2023.pdf">Slides ↗</a></div>
+        <div class="links"><a href="https://arxiv.org/abs/2309.13136">Paper ↗</a><a href="https://rosielab.github.io/emotion-captions/">Website ↗</a></div>
       </div>
       <div class="talk rv">
-        <figure class="frame" data-file="images/talk-sleep.jpg"><img src="images/talk-sleep.jpg" alt=""></figure>
+        <figure class="frame" data-file="images/talk-sleep.jpg">
+          <img src="images/talk-sleep.jpg" alt="" style="object-position: center 57%;"></figure>
+        <!-- <figure class="frame" data-file="images/talk-sleep.jpg"><img src="images/talk-sleep.jpg" alt=""></figure> -->
         <span class="mono">Poster · SLEEP 2025</span>
         <h6>Machine Learning to Assess Obstructive Sleep Apnea Severity</h6>
-        <div class="links"><a href="slides/sleep-2025-poster.pdf">Poster ↗</a></div>
+        <div class="links"><a href="https://drive.google.com/file/d/1FbZlUHGkz5p_cyXVXN4LL9n7i-5ZFhZt/view?usp=sharing">Poster ↗</a></div>
       </div>
       <div class="talk rv">
         <figure class="frame" data-file="images/talk-vector.jpg"><img src="images/talk-vector.jpg" alt=""></figure>
         <span class="mono">CAHSPR 2024 · Vector Institute</span>
         <h6>Public Health and Fairness Evaluation using ML Models on Clinical Notes</h6>
-        <div class="links"><a href="slides/vector-2024.pdf">Slides ↗</a><a href="#">Talk video ↗</a></div>
+        <div class="links"><a href="https://docs.google.com/presentation/d/1hPdZNIfd1olP652nIGE4dtqMJBmIptE1yQ0455FwEFI/edit?usp=sharing">Slides ↗</a><a href="https://cahspr.ca/wp-content/uploads/2024/05/CAHSPR2024-book-of-abstract-orals.pdf"> Abstract ↗</a></div>
       </div>
-      <div class="talk rv">
+      <!-- <div class="talk rv">
         <figure class="frame" data-file="images/talk-radiocare.jpg"><img src="images/talk-radiocare.jpg" alt=""></figure>
         <span class="mono">Borealis AI · Let's SOLVE It 2024</span>
         <h6>RadioCare: Radiology Report Generation from Chest X-rays</h6>
-        <div class="links"><a href="slides/radiocare-2024.pdf">Slides ↗</a><a href="https://github.com/Adibvafa/RadioCareBorealisAI">Code ↗</a></div>
-      </div>
+        <div class="links"><a href="https://docs.google.com/presentation/d/1sKMa3NpDPxKwZbNb-RWr0YXdB_urPkfW/edit?usp=sharing&ouid=115947769963404649137&rtpof=true&sd=true">Slides ↗</a><a href="https://github.com/Adibvafa/RadioCareBorealisAI">Code ↗</a></div>
+      </div> -->
     </div>
   </div>
 </section>
@@ -544,21 +553,25 @@
         <ul class="aw">
           <li><span>DAAD RISE Scholarship</span><em>German Academic Exchange Service · 2026</em></li>
           <li><span>T-CAIREM AI in Medicine Research Grant</span><em>University of Toronto · 2025 · 1 of 32</em></li>
-          <li><span>Generation Google Scholarship</span><em>Google · North America</em></li>
-          <li><span>Peng Tu Ge Scholarship for Women in CS</span><em>Simon Fraser University</em></li>
-          <li><span>Bit Quill Technologies Scholarship for Women in CS</span><em>Simon Fraser University</em></li>
-          <li><span>WiCS Alumni Award</span><em>Simon Fraser University</em></li>
-          <li><span>Justin Xie Memorial Award</span><em>Simon Fraser University</em></li>
+          <li><span>Generation Google Scholarship</span><em>Google · North America · 2025 - 26</em></li>
+          <li><span>Elma Krbavac Undergraduate Scholarship in Computing Science</span><em>Simon Fraser University · 2026</em></li>
+          <li><span>Bit Quill Technologies Scholarship for Women in Computing Science</span><em>Simon Fraser University· 2026</em></li>
+          <li><span>Women in Computing Science Alumni Award</span><em>Simon Fraser University· 2026</em></li>
+          <li><span>Justin Xie Memorial Award</span><em>Simon Fraser University· 2026</em></li>
+          <li><span>Peng Tu Ge Scholarship for Women in Computing Science</span><em>Simon Fraser University · 2025</em></li>
+          <li><span>Computing Science Undergraduate Student Society Award</span><em>Simon Fraser University · 2025 </em></li>
+
         </ul>
       </div>
       <div class="rv">
         <p class="mono aw-h">Honours &amp; selections</p>
         <ul class="aw">
           <li><span>Best Presentation</span><em>T-CAIREM Summer Cohort · 2025</em></li>
-          <li><span>1st Place, Undergraduate Research Symposium</span><em>Simon Fraser University · 2023</em></li>
           <li><span>RBC Amplify</span><em>1 of 69 students across Canada · 2024</em></li>
+          <li><span>Borealis AI</span><em>Spring 2024 Let's SOLVE it cohort</em></li>
+          <li><span>1st Place, Undergraduate Research Symposium</span><em>Simon Fraser University · 2023</em></li>
           <li><span>AI4Good Lab Fellow</span><em>1 of 30, Amii cohort · 2023</em></li>
-          <li><span>Paper accepted, ACII 2023</span><em>MIT Media Lab</em></li>
+          <!-- <li><span>Paper accepted, ACII 2023</span><em>MIT Media Lab</em></li> -->
         </ul>
       </div>
     </div>
@@ -581,7 +594,7 @@
   </div>
 </section>
 
-<!-- ================= GALLERY ================= -->
+<!-- ================= GALLERY =================
 <section id="gallery">
   <div class="wrap">
     <div class="sec-head rv">
@@ -597,7 +610,7 @@
       <figure class="frame rv" data-file="images/gallery-6.jpg"><img src="images/gallery-6.jpg" alt=""><figcaption>ACII 2023, MIT</figcaption></figure>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- ================= CONTACT ================= -->
 <section class="contact" id="contact">
@@ -606,10 +619,10 @@
     <h2>Let's build machines<br>that <em>see.</em></h2>
     <a class="email" href="mailto:srivastavaarchita2001@gmail.com">srivastavaarchita2001@gmail.com</a>
     <div class="socials">
-      <a href="#">LinkedIn ↗</a>
-      <a href="#">GitHub ↗</a>
-      <a href="#">Google Scholar ↗</a>
-      <a href="resume.pdf">Résumé ↗</a>
+      <a href="https://www.linkedin.com/in/archita7/">LinkedIn ↗</a>
+      <a href="https://github.com/Archita93">GitHub ↗</a>
+      <a href="https://scholar.google.ca/citations?user=fus2eAwAAAAJ&hl=en">Google Scholar ↗</a>
+      <a href="slides/resume.pdf">Résumé ↗</a>
     </div>
   </div>
 </section>
