@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archita Srivastava · Links</title>
+<meta name="description" content="Archita Srivastava — AI & Robotics. Website, résumé, GitHub, Google Scholar and LinkedIn.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0a0e1a; --ink:#ffffff; --muted:#9fb0d0; --cyan:#38e1ff; --green:#3ddc84; --line:#1f2840; --card:#111729; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:var(--bg); color:var(--ink); min-height:100vh;
+    font-family:"Space Grotesk", system-ui, sans-serif;
+    display:flex; justify-content:center; padding:56px 20px 40px;
+    background-image:
+      radial-gradient(ellipse 120% 70% at 50% 115%, transparent 58%, rgba(93,111,152,.18) 58.3%, transparent 58.8%),
+      radial-gradient(ellipse 120% 70% at 50% 115%, transparent 66%, rgba(93,111,152,.14) 66.3%, transparent 66.8%),
+      radial-gradient(ellipse 120% 70% at 50% 115%, transparent 74%, rgba(93,111,152,.10) 74.3%, transparent 74.8%),
+      radial-gradient(ellipse 120% 70% at 50% 115%, transparent 82%, rgba(93,111,152,.07) 82.3%, transparent 82.8%);
+    background-attachment:fixed;
+  }
+  main { width:100%; max-width:420px; position:relative; padding:28px 24px; }
+  /* corner brackets, like the card */
+  main::before, main::after, .c1, .c2 { content:""; position:absolute; width:14px; height:14px; border-color:var(--cyan); border-style:solid; }
+  main::before { top:0; left:0; border-width:1.5px 0 0 1.5px; }
+  main::after  { top:0; right:0; border-width:1.5px 1.5px 0 0; }
+  .c1 { bottom:0; left:0; border-width:0 0 1.5px 1.5px; }
+  .c2 { bottom:0; right:0; border-width:0 1.5px 1.5px 0; }
+  .mono { font-family:"JetBrains Mono", ui-monospace, monospace; }
+  .hello { color:var(--cyan); font-size:12px; }
+  h1 { font-size:38px; line-height:1.05; font-weight:700; margin-top:12px; letter-spacing:-.01em; }
+  .role { color:var(--muted); font-size:13px; margin-top:10px; }
+  ul { list-style:none; display:grid; gap:10px; margin-top:30px; }
+  a.link {
+    display:flex; justify-content:space-between; align-items:center;
+    background:var(--card); border:1px solid var(--line); border-radius:8px;
+    padding:16px 18px; color:var(--ink); text-decoration:none; font-size:16px; font-weight:500;
+    transition:border-color .15s, transform .15s;
+  }
+  a.link:hover, a.link:focus-visible { border-color:var(--cyan); transform:translateY(-1px); outline:none; }
+  a.link span.k { font-family:"JetBrains Mono", monospace; font-size:12px; color:var(--muted); }
+  a.link:hover span.k { color:var(--cyan); }
+  .status { color:var(--green); font-size:12px; margin-top:26px; }
+</style>
+</head>
+<body>
+<main>
+  <span class="c1"></span><span class="c2"></span>
+  <p class="hello mono">// hello, world</p>
+  <h1>Archita<br>Srivastava</h1>
+  <p class="role mono">ai | robotics</p>
+
+  <ul>
+    <li><a class="link" href="https://archita93.github.io/">Website <span class="k">↗</span></a></li>
+    <li><a class="link" href="https://archita93.github.io/slides/resume.pdf">Résumé <span class="k">pdf ↗</span></a></li>
+    <li><a class="link" href="https://github.com/Archita93">GitHub <span class="k">↗</span></a></li>
+    <li><a class="link" href="https://scholar.google.ca/citations?user=fus2eAwAAAAJ&amp;hl=en">Google Scholar <span class="k">↗</span></a></li>
+    <li><a class="link" href="https://www.linkedin.com/in/archita7/">LinkedIn <span class="k">↗</span></a></li>
+  </ul>
+
+  <p class="status mono">status: open to chat</p>
+</main>
+</body>
+</html>
